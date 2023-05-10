@@ -31,15 +31,16 @@
             this.ScVertical = new System.Windows.Forms.SplitContainer();
             this.ScLeft = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnInv = new System.Windows.Forms.Button();
+            this.BtnSolve = new System.Windows.Forms.Button();
+            this.BtnMultiple = new System.Windows.Forms.Button();
+            this.BtnSubstract = new System.Windows.Forms.Button();
+            this.BtnAdd = new System.Windows.Forms.Button();
+            this.BtnTest = new System.Windows.Forms.Button();
             this.TbMatrixA = new System.Windows.Forms.TextBox();
             this.ScRight = new System.Windows.Forms.SplitContainer();
             this.TbMatrixB = new System.Windows.Forms.TextBox();
             this.TbMatrixM = new System.Windows.Forms.TextBox();
-            this.BtnTest = new System.Windows.Forms.Button();
-            this.BtnAdd = new System.Windows.Forms.Button();
-            this.BtnSubstract = new System.Windows.Forms.Button();
-            this.BtnMultiple = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ScVertical)).BeginInit();
             this.ScVertical.Panel1.SuspendLayout();
             this.ScVertical.Panel2.SuspendLayout();
@@ -99,7 +100,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.BtnInv);
+            this.panel1.Controls.Add(this.BtnSolve);
             this.panel1.Controls.Add(this.BtnMultiple);
             this.panel1.Controls.Add(this.BtnSubstract);
             this.panel1.Controls.Add(this.BtnAdd);
@@ -109,6 +111,66 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(450, 223);
             this.panel1.TabIndex = 0;
+            // 
+            // BtnInv
+            // 
+            this.BtnInv.Location = new System.Drawing.Point(93, 70);
+            this.BtnInv.Name = "BtnInv";
+            this.BtnInv.Size = new System.Drawing.Size(75, 23);
+            this.BtnInv.TabIndex = 5;
+            this.BtnInv.Text = "Inv";
+            this.BtnInv.UseVisualStyleBackColor = true;
+            this.BtnInv.Click += new System.EventHandler(this.BtnInv_Click);
+            // 
+            // BtnSolve
+            // 
+            this.BtnSolve.Location = new System.Drawing.Point(12, 70);
+            this.BtnSolve.Name = "BtnSolve";
+            this.BtnSolve.Size = new System.Drawing.Size(75, 23);
+            this.BtnSolve.TabIndex = 4;
+            this.BtnSolve.Text = "Solve";
+            this.BtnSolve.UseVisualStyleBackColor = true;
+            this.BtnSolve.Click += new System.EventHandler(this.BtnSolve_Click);
+            // 
+            // BtnMultiple
+            // 
+            this.BtnMultiple.Location = new System.Drawing.Point(174, 41);
+            this.BtnMultiple.Name = "BtnMultiple";
+            this.BtnMultiple.Size = new System.Drawing.Size(75, 23);
+            this.BtnMultiple.TabIndex = 3;
+            this.BtnMultiple.Text = "*";
+            this.BtnMultiple.UseVisualStyleBackColor = true;
+            this.BtnMultiple.Click += new System.EventHandler(this.BtnMultiple_Click);
+            // 
+            // BtnSubstract
+            // 
+            this.BtnSubstract.Location = new System.Drawing.Point(93, 41);
+            this.BtnSubstract.Name = "BtnSubstract";
+            this.BtnSubstract.Size = new System.Drawing.Size(75, 23);
+            this.BtnSubstract.TabIndex = 2;
+            this.BtnSubstract.Text = "-";
+            this.BtnSubstract.UseVisualStyleBackColor = true;
+            this.BtnSubstract.Click += new System.EventHandler(this.BtnSubstract_Click);
+            // 
+            // BtnAdd
+            // 
+            this.BtnAdd.Location = new System.Drawing.Point(12, 41);
+            this.BtnAdd.Name = "BtnAdd";
+            this.BtnAdd.Size = new System.Drawing.Size(75, 23);
+            this.BtnAdd.TabIndex = 1;
+            this.BtnAdd.Text = "+";
+            this.BtnAdd.UseVisualStyleBackColor = true;
+            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+            // 
+            // BtnTest
+            // 
+            this.BtnTest.Location = new System.Drawing.Point(12, 12);
+            this.BtnTest.Name = "BtnTest";
+            this.BtnTest.Size = new System.Drawing.Size(75, 23);
+            this.BtnTest.TabIndex = 0;
+            this.BtnTest.Text = "Test";
+            this.BtnTest.UseVisualStyleBackColor = true;
+            this.BtnTest.Click += new System.EventHandler(this.BtnTest_Click);
             // 
             // TbMatrixA
             // 
@@ -120,7 +182,8 @@
             this.TbMatrixA.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TbMatrixA.Size = new System.Drawing.Size(450, 218);
             this.TbMatrixA.TabIndex = 0;
-            this.TbMatrixA.Text = "1 2\r\n3 4\r\n";
+            this.TbMatrixA.Text = "0,2    7,5    5,0    7,7\r\n3,2    9,4    6,2    0,3\r\n7,7    0,2    5,6    4,7\r\n1,1" +
+    "    3,5    7,9    4,8";
             this.TbMatrixA.WordWrap = false;
             // 
             // ScRight
@@ -155,7 +218,8 @@
             this.TbMatrixB.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TbMatrixB.Size = new System.Drawing.Size(471, 223);
             this.TbMatrixB.TabIndex = 1;
-            this.TbMatrixB.Text = "4 3\r\n2 1\r\n";
+            this.TbMatrixB.Text = "1,0    0,0    0,0    0,0    5,7\r\n0,0    1,0    0,0    0,0    1,0\r\n0,0    0,0    1" +
+    ",0    0,0    3,5\r\n0,0    0,0    0,0    1,0    10,0";
             this.TbMatrixB.WordWrap = false;
             // 
             // TbMatrixM
@@ -170,55 +234,6 @@
             this.TbMatrixM.Size = new System.Drawing.Size(471, 218);
             this.TbMatrixM.TabIndex = 2;
             this.TbMatrixM.WordWrap = false;
-            // 
-            // BtnTest
-            // 
-            this.BtnTest.Location = new System.Drawing.Point(12, 12);
-            this.BtnTest.Name = "BtnTest";
-            this.BtnTest.Size = new System.Drawing.Size(75, 23);
-            this.BtnTest.TabIndex = 0;
-            this.BtnTest.Text = "Test";
-            this.BtnTest.UseVisualStyleBackColor = true;
-            this.BtnTest.Click += new System.EventHandler(this.BtnTest_Click);
-            // 
-            // BtnAdd
-            // 
-            this.BtnAdd.Location = new System.Drawing.Point(12, 41);
-            this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(75, 23);
-            this.BtnAdd.TabIndex = 1;
-            this.BtnAdd.Text = "+";
-            this.BtnAdd.UseVisualStyleBackColor = true;
-            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
-            // 
-            // BtnSubstract
-            // 
-            this.BtnSubstract.Location = new System.Drawing.Point(93, 41);
-            this.BtnSubstract.Name = "BtnSubstract";
-            this.BtnSubstract.Size = new System.Drawing.Size(75, 23);
-            this.BtnSubstract.TabIndex = 2;
-            this.BtnSubstract.Text = "-";
-            this.BtnSubstract.UseVisualStyleBackColor = true;
-            this.BtnSubstract.Click += new System.EventHandler(this.BtnSubstract_Click);
-            // 
-            // BtnMultiple
-            // 
-            this.BtnMultiple.Location = new System.Drawing.Point(174, 41);
-            this.BtnMultiple.Name = "BtnMultiple";
-            this.BtnMultiple.Size = new System.Drawing.Size(75, 23);
-            this.BtnMultiple.TabIndex = 3;
-            this.BtnMultiple.Text = "*";
-            this.BtnMultiple.UseVisualStyleBackColor = true;
-            this.BtnMultiple.Click += new System.EventHandler(this.BtnMultiple_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(12, 70);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
             // 
             // MatrixOperationForm
             // 
@@ -258,11 +273,12 @@
         private System.Windows.Forms.SplitContainer ScRight;
         private System.Windows.Forms.TextBox TbMatrixB;
         private System.Windows.Forms.TextBox TbMatrixM;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button BtnSolve;
         private System.Windows.Forms.Button BtnMultiple;
         private System.Windows.Forms.Button BtnSubstract;
         private System.Windows.Forms.Button BtnAdd;
         private System.Windows.Forms.Button BtnTest;
+        private System.Windows.Forms.Button BtnInv;
     }
 }
 

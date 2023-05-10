@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +19,13 @@ namespace MatrixOperation
         {
             data = new double[Rsize, Csize];
         }
+
+        public Matrix(double[,] data)
+        {
+            this.data = (double[,])data.Clone();
+        }
+
+        public Matrix(Matrix m) : this(m.data) {}
 
         public double this[int r, int c]
         {
@@ -90,9 +100,56 @@ namespace MatrixOperation
             return m;
         }
 
+        public static Matrix Solve(Matrix m, Matrix y)
+        {
+            int mColCount = m.Csize;
+            int mRowCount = m.Rsize;
+            int yColCount = y.Csize;
+            int yRowCount = y.Rsize;
+            int diagCount = mRowCount;
+         
+
+            for(int d = 0; d < diagCount; d++)
+            {
+                double divider = m[d, d];
+                
+                for (int c = 0; c < mColCount; c++) m.data[d, c] /= divider;
+                for (int c = 0; c < yColCount; c++) y.data[d, c] /= divider;
+                
+                for(int r = 0; r < mRowCount; r++)
+                {
+                    if(r != d)
+                    {
+                        double multiplier = m[r, d];
+                        for(int c = 0; c < mColCount; c++) m.data[r, c] -= multiplier * m.data[d, c];
+                        for(int c = 0; c < yColCount; c++) y.data[r, c] -= multiplier * y.data[d, c];
+                    }
+                }
+            }
+            return y;
+        }
+
+        public static Matrix Ones(int size)
+        {
+            Matrix m = new Matrix(size, size);
+
+            for(int d = 0; d < size; d++)
+            {
+                m[d, d] = 1;
+            }
+
+            return m;
+        }
+
+        public Matrix Inv()
+        {
+            return Solve(this, Ones(Rsize));
+        }
+
         public static bool TryParse(string text, out Matrix m)
         {
             m = null;
+            //text = text.Replace('.', ',');
 
             string[] rows = text.Split("\r\n\v\f".ToArray(), StringSplitOptions.RemoveEmptyEntries);
             int Rsize = rows.Length;

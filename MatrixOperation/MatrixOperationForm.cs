@@ -105,6 +105,45 @@ namespace MatrixOperation
             else TbMatrixM.Text = "Parse error";
         }
 
-        
+        private void BtnSolve_Click(object sender, EventArgs e)
+        {
+            Matrix MatrixA;
+            if (Matrix.TryParse(TbMatrixA.Text.Trim(), out MatrixA))
+            {
+                Matrix MatrixB;
+                if (Matrix.TryParse(TbMatrixB.Text.Trim(), out MatrixB))
+                {
+                    try
+                    {
+                        Matrix matrixM = Matrix.Solve(MatrixA, MatrixB);
+                        TbMatrixM.Text = matrixM.ToString();
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        TbMatrixM.Text = ex.Message;
+                    }
+                }
+                else TbMatrixM.Text = "Parse error";
+            }
+            else TbMatrixM.Text = "Parse error";
+        }
+
+        private void BtnInv_Click(object sender, EventArgs e)
+        {
+            Matrix MatrixA;
+            if (Matrix.TryParse(TbMatrixA.Text.Trim(), out MatrixA))
+            {
+                try
+                {
+                    Matrix matrixM = MatrixA.Inv();
+                    TbMatrixM.Text = matrixM.ToString();
+                }
+                catch (ArgumentException ex)
+                {
+                    TbMatrixM.Text = ex.Message;
+                }
+            }
+            else TbMatrixM.Text = "Parse error";
+        }
     }
 }
